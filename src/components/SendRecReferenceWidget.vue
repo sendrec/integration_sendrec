@@ -26,11 +26,6 @@ export default {
 			type: Object,
 			required: true,
 		},
-
-		accessible: {
-			type: Boolean,
-			default: true,
-		},
 	},
 
 	computed: {
