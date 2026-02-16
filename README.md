@@ -2,6 +2,8 @@
 
 Integrate your self-hosted [SendRec](https://sendrec.eu) instance with Nextcloud.
 
+![Admin settings](img/admin-settings.png)
+
 ## Features
 
 - **Link previews** — Paste a SendRec watch URL in Talk, Text, or Deck to see a rich card with thumbnail, title, and duration
