@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  php-lint:
+    name: PHP Lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['8.1', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+      - name: Lint PHP files
+        run: find lib/ -name '*.php' -print0 | xargs -0 -n1 php -l
+
+  frontend-build:
+    name: Frontend Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run lint
+
+  info-xml:
+    name: Validate info.xml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate info.xml
+        run: xmllint --noout appinfo/info.xml
