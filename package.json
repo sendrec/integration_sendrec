@@ -1,0 +1,36 @@
+{
+  "name": "integration_sendrec",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
+    "stylelint": "stylelint src/**/*.vue src/**/*.scss src/**/*.css",
+    "stylelint:fix": "stylelint --fix src/**/*.vue src/**/*.scss src/**/*.css"
+  },
+  "engines": {
+    "node": "^22.0.0",
+    "npm": "^10.5.0"
+  },
+  "dependencies": {
+    "@nextcloud/auth": "^2.5.2",
+    "@nextcloud/axios": "^2.5.1",
+    "@nextcloud/dialogs": "^7.0.0-rc.2",
+    "@nextcloud/initial-state": "^3.0.0",
+    "@nextcloud/l10n": "^3.4.0",
+    "@nextcloud/router": "^3.0.1",
+    "@nextcloud/vue": "^9.0.0-rc.9",
+    "vue": "^3.5.21"
+  },
+  "devDependencies": {
+    "@nextcloud/babel-config": "^1.2.0",
+    "@nextcloud/browserslist-config": "^3.0.1",
+    "@nextcloud/eslint-config": "^9.0.0-rc.5",
+    "@nextcloud/stylelint-config": "^3.0.1",
+    "@nextcloud/webpack-vue-config": "^6.3.0",
+    "eslint-webpack-plugin": "^5.0.2",
+    "stylelint-webpack-plugin": "^5.0.1"
+  }
+}
