@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development --watch",
+    "build": "webpack --config webpack.js --mode production",
+    "dev": "webpack --config webpack.js --mode development --watch",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "stylelint": "stylelint src/**/*.vue src/**/*.scss src/**/*.css",
