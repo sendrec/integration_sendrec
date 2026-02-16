@@ -2,7 +2,8 @@
 	<div id="sendrec-personal-settings">
 		<h2>SendRec</h2>
 		<div class="field">
-			<input id="sendrec-search-enabled"
+			<input
+				id="sendrec-search-enabled"
 				v-model="searchEnabled"
 				type="checkbox"
 				@change="onSave">
@@ -11,7 +12,8 @@
 			</label>
 		</div>
 		<div class="field">
-			<input id="sendrec-link-preview-enabled"
+			<input
+				id="sendrec-link-preview-enabled"
 				v-model="linkPreviewEnabled"
 				type="checkbox"
 				@change="onSave">
@@ -24,8 +26,8 @@
 
 <script>
 import axios from '@nextcloud/axios'
+import { showError, showSuccess } from '@nextcloud/dialogs'
 import { generateUrl } from '@nextcloud/router'
-import { showSuccess, showError } from '@nextcloud/dialogs'
 
 export default {
 	name: 'PersonalSettings',
@@ -35,12 +37,14 @@ export default {
 			default: () => ({}),
 		},
 	},
+
 	data() {
 		return {
 			searchEnabled: this.initialState.search_enabled !== false,
 			linkPreviewEnabled: this.initialState.link_preview_enabled !== false,
 		}
 	},
+
 	methods: {
 		async onSave() {
 			try {
@@ -49,7 +53,7 @@ export default {
 					linkPreviewEnabled: this.linkPreviewEnabled,
 				})
 				showSuccess(this.t('integration_sendrec', 'SendRec preferences saved'))
-			} catch (e) {
+			} catch {
 				showError(this.t('integration_sendrec', 'Failed to save SendRec preferences'))
 			}
 		},

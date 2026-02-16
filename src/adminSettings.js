@@ -1,8 +1,8 @@
 import { getCSPNonce } from '@nextcloud/auth'
+import { loadState } from '@nextcloud/initial-state'
+import { n, t } from '@nextcloud/l10n'
 import { linkTo } from '@nextcloud/router'
 import { createApp } from 'vue'
-import { loadState } from '@nextcloud/initial-state'
-import { t, n } from '@nextcloud/l10n'
 import AdminSettings from './components/AdminSettings.vue'
 
 __webpack_nonce__ = getCSPNonce()

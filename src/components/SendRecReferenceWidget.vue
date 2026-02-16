@@ -1,5 +1,9 @@
 <template>
-	<a :href="richObject.watchUrl" target="_blank" rel="noopener noreferrer" class="sendrec-widget">
+	<a
+		:href="richObject.watchUrl"
+		target="_blank"
+		rel="noopener noreferrer"
+		class="sendrec-widget">
 		<div v-if="richObject.thumbnailUrl" class="sendrec-widget__thumbnail">
 			<img :src="richObject.thumbnailUrl" :alt="richObject.title">
 		</div>
@@ -22,11 +26,13 @@ export default {
 			type: Object,
 			required: true,
 		},
+
 		accessible: {
 			type: Boolean,
 			default: true,
 		},
 	},
+
 	computed: {
 		formattedDuration() {
 			const d = this.richObject.duration || 0

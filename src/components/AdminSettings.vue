@@ -8,7 +8,8 @@
 			<label for="sendrec-instance-url">
 				{{ t('integration_sendrec', 'SendRec instance URL') }}
 			</label>
-			<input id="sendrec-instance-url"
+			<input
+				id="sendrec-instance-url"
 				v-model="instanceUrl"
 				type="url"
 				:placeholder="t('integration_sendrec', 'https://videos.example.com')"
@@ -18,10 +19,11 @@
 			<label for="sendrec-api-key">
 				{{ t('integration_sendrec', 'API key') }}
 			</label>
-			<input id="sendrec-api-key"
+			<input
+				id="sendrec-api-key"
 				v-model="apiKey"
 				type="password"
-				:placeholder="t('integration_sendrec', 'sr_...')"
+				:placeholder="t('integration_sendrec', 'sr_…')"
 				@input="onSave">
 			<p class="settings-hint">
 				{{ t('integration_sendrec', 'Generate an API key in your SendRec instance under Settings > API Keys.') }}
@@ -32,8 +34,8 @@
 
 <script>
 import axios from '@nextcloud/axios'
+import { showError, showSuccess } from '@nextcloud/dialogs'
 import { generateUrl } from '@nextcloud/router'
-import { showSuccess, showError } from '@nextcloud/dialogs'
 
 export default {
 	name: 'AdminSettings',
@@ -43,6 +45,7 @@ export default {
 			default: () => ({}),
 		},
 	},
+
 	data() {
 		return {
 			instanceUrl: this.initialState.instance_url || '',
@@ -50,11 +53,13 @@ export default {
 			saveTimeout: null,
 		}
 	},
+
 	methods: {
 		onSave() {
 			clearTimeout(this.saveTimeout)
 			this.saveTimeout = setTimeout(this.save, 500)
 		},
+
 		async save() {
 			try {
 				await axios.put(generateUrl('/apps/integration_sendrec/admin-config'), {
@@ -62,7 +67,7 @@ export default {
 					apiKey: this.apiKey,
 				})
 				showSuccess(this.t('integration_sendrec', 'SendRec settings saved'))
-			} catch (e) {
+			} catch {
 				showError(this.t('integration_sendrec', 'Failed to save SendRec settings'))
 			}
 		},
