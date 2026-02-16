@@ -18,7 +18,7 @@ Integrate your self-hosted [SendRec](https://sendrec.eu) instance with Nextcloud
 ## Requirements
 
 - Nextcloud 28 or later
-- A running SendRec instance (v1.26.0+)
+- A running SendRec instance (v1.26.0+) — [self-host with Docker](https://github.com/sendrec/sendrec/blob/main/SELF-HOSTING.md) or install via the [Unraid Community Apps template](https://github.com/sendrec/sendrec/blob/main/unraid-template.xml)
 
 ## SendRec configuration
 
